@@ -1,0 +1,59 @@
+* {
+  margin: auto;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+}
+
+.resume {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: #66E;
+  color: blue;
+  margin: 0;
+}
+
+.header {
+  background: #6E6;
+  height: 20%;
+  line-height: 5;
+}
+
+.header h1 {
+  display: inline;
+  padding: 10px;
+  padding-left: 25px;
+}
+
+.container {
+  height: 85%;
+}
+
+.sidebar {
+  background: #6EE;
+  width: 30%;
+  height: 80%;
+  float: left;
+}
+
+.content {
+  background: #EE6;
+  width: 70%;
+  height: 80%;
+  margin-left: 30%;
+}
