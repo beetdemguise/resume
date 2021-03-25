@@ -21,15 +21,15 @@
 (def sidebar-width (+ portrait-width standard-padding standard-padding 5))
 
 (def backgrounds
-  #_{:body "#66E"
+  {:body "#66E"
    :header "#6E6"
    :sidebar "#6EE"
    :content "#EE6"}
-  {})
+  #_{})
 
 (defstyles screen
   [:* {:margin "auto"
-       :font-family "'Open Sans', sans-serif"}]
+       :font-family "'Raleway', sans-serif"}]
   [:html full]
   [:body full]
   [:#app full]
@@ -43,20 +43,20 @@
              ;;:line-height 5
              }
    [:.name {:font-size (pixels 85)
-            :letter-spacing (pixels 5)
+            :letter-spacing (pixels 10)
+            :font-weight 400
             :padding (pixels standard-padding)
             :padding-bottom 0}]
    [:.title {:font-size (pixels 24)
-             :padding (pixels standard-padding)
-             :padding-top 0}]]
+             :letter-spacing (pixels 5)}]]
   [:.container {:height "85%"}]
   [:.sidebar {:background (:sidebar backgrounds)
               :width (pixels sidebar-width)
               :height (percent 100)
               :float "left"
               :text-align "center"
-              :margin-top (pixels standard-padding)
-              :margin-bottom (pixels standard-padding)
+              ;; :margin-top (pixels standard-padding)
+              ;; :margin-bottom (pixels standard-padding)
               ;:border-right "2px solid #EEE"
               }
    [:.portrait {:height (pixels portrait-height)
@@ -64,18 +64,18 @@
                 :padding (pixels standard-padding)}]
    [:.contact {:padding (pixels small-padding)}]
    [:.skills {:padding (pixels small-padding)}]]
-  [:.main {:height "100%"
-           :margin-left (pixels sidebar-width)}
-   [:.content {:background (:content backgrounds)
+  [:.main {:height "100%"}
+   [:.content {:margin-left (pixels sidebar-width)
+               :background (:content backgrounds)
                ;; :width (percent (- 100 sidebar-width))
                :height (percent 100)
                :padding (pixels standard-padding)
                ;;:border-top "2px solid #EEE"
                }
-    [:.experience {:padding (pixels small-padding)}
+    [:.experience {:padding-bottom (pixels small-padding)}
      [:.job {:padding (pixels small-padding)}
       [:.title {:font-size (pixels 24)}]
       [:.description {:padding (pixels smaller-padding)}
        [:.company.team {:font-size (pixels 14)}]
        [:.from.to {:font-size (pixels 14)}]]]]
-    [:.education {:padding (pixels small-padding)}]]])
+    [:.education {:padding-top (pixels small-padding)}]]])

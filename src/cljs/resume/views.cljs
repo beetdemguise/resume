@@ -82,7 +82,7 @@
 (defn content
   []
   [:div.main
-   (header)
+   (sidebar)
    [:div.content
     (experience)
     (education)]])
@@ -90,6 +90,5 @@
 (defn resume
   []
   [:div.resume
-   ;; (header)
-   (sidebar)
+   (header)
    (content)])
