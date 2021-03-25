@@ -1,10 +1,6 @@
 (ns resume.css
   (:require [garden.def :refer [defstyles]]))
 
-(def full {:height "100%" :width "100%"})
-(def header-height 20)
-(def sidebar-width 30)
-
 (defn percent
   [num]
   (str num "%"))
@@ -13,27 +9,73 @@
   [num]
   (str num "px"))
 
+(def full {:height (percent 100)
+           :width (percent 100)})
+
+(def standard-padding 25)
+(def small-padding 10)
+(def smaller-padding 5)
+
+(def portrait-width 375)
+(def portrait-height 415)
+(def sidebar-width (+ portrait-width standard-padding standard-padding 5))
+
+(def backgrounds
+  #_{:body "#66E"
+   :header "#6E6"
+   :sidebar "#6EE"
+   :content "#EE6"}
+  {})
+
 (defstyles screen
-  [:* {:margin "auto"}]
+  [:* {:margin "auto"
+       :font-family "'Open Sans', sans-serif"}]
   [:html full]
   [:body full]
   [:#app full]
   [:.resume full]
-  [:body {:background "#66E"
+  [:body {:background (:body backgrounds)
           :color "blue"
           :margin 0}]
-  [:.header {:background "#6E6"
-             :height (percent header-height)
-             :line-height 5}
-   [:h1 {:display "inline"
-         :padding (pixels 10)
-         :padding-left (pixels 25)}]]
+  [:.header {:background (:header backgrounds)
+             ;;:height (percent header-height)
+             :text-align "center"
+             ;;:line-height 5
+             }
+   [:.name {:font-size (pixels 85)
+            :letter-spacing (pixels 5)
+            :padding (pixels standard-padding)
+            :padding-bottom 0}]
+   [:.title {:font-size (pixels 24)
+             :padding (pixels standard-padding)
+             :padding-top 0}]]
   [:.container {:height "85%"}]
-  [:.sidebar {:background "#6EE"
-              :width (percent sidebar-width)
-              :height (percent (- 100 header-height))
-              :float "left"}]
-  [:.content {:background "#EE6"
-              :width (percent (- 100 sidebar-width))
-              :height (percent (- 100 header-height))
-              :margin-left (percent sidebar-width)}])
+  [:.sidebar {:background (:sidebar backgrounds)
+              :width (pixels sidebar-width)
+              :height (percent 100)
+              :float "left"
+              :text-align "center"
+              :margin-top (pixels standard-padding)
+              :margin-bottom (pixels standard-padding)
+              ;:border-right "2px solid #EEE"
+              }
+   [:.portrait {:height (pixels portrait-height)
+                :width (pixels portrait-width)
+                :padding (pixels standard-padding)}]
+   [:.contact {:padding (pixels small-padding)}]
+   [:.skills {:padding (pixels small-padding)}]]
+  [:.main {:height "100%"
+           :margin-left (pixels sidebar-width)}
+   [:.content {:background (:content backgrounds)
+               ;; :width (percent (- 100 sidebar-width))
+               :height (percent 100)
+               :padding (pixels standard-padding)
+               ;;:border-top "2px solid #EEE"
+               }
+    [:.experience {:padding (pixels small-padding)}
+     [:.job {:padding (pixels small-padding)}
+      [:.title {:font-size (pixels 24)}]
+      [:.description {:padding (pixels smaller-padding)}
+       [:.company.team {:font-size (pixels 14)}]
+       [:.from.to {:font-size (pixels 14)}]]]]
+    [:.education {:padding (pixels small-padding)}]]])
