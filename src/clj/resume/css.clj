@@ -34,7 +34,6 @@
                   :cursor "default"}]
   [:body {:background (:body backgrounds)
           :color "#34495E"
-          ;; :max-width (pixels 1100)
           :width (percent 100)
           :margin "auto"}]
   [:.header {:text-transform "uppercase"
@@ -71,19 +70,9 @@
                 :flex-direction "column"
                 :background (:sidebar backgrounds)
                 :padding (pixels standard-padding)
-                :max-width (pixels portrait-width)
-                ;; :width (pixels sidebar-width)
-                ;; :height (percent 100)
-                ;; :float "left"
-                ;; :text-align "center"
-                ;; :margin-top (pixels standard-padding)
-                ;; :margin-bottom (pixels standard-padding)
-                                        ;:border-right "2px solid #EEE"
-                }
+                :max-width (pixels portrait-width)}
      [:.portrait {:height (pixels portrait-height)
                   :width (pixels portrait-width)
-                  ;; :margin-right (pixels 25)
-                  ;; :margin-left (pixels 25)
                   :padding-bottom (pixels standard-padding)}]
      [:.contact {:padding-bottom (pixels standard-padding)}
       [:.methods {:display "flex"
