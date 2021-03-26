@@ -11,7 +11,7 @@
    :_info {:name "Darin Douglass"
            :title "Software Engineer"
            :contact-methods [{:icon :i.far.fa-envelope
-                              :href "mailto:douglassdarin@gmail.com"
+                              :href "mailto:douglassdarin+resume@gmail.com"
                               :text "douglassdarin@gmail.com"}
                              {:icon :i.fas.fa-phone-alt
                               :text "(616) 312 - 9313"}
