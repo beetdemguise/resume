@@ -22,22 +22,19 @@
    [:p.title "Software Engineer"]])
 
 (defn degree
-  [{:keys [name major university]}]
-  [:div.degree
-   [:span name]
-   [:span major]
-   [:span university]])
+  [{:keys [icon name major]}]
+  [:div.degree2
+   [:img {:src icon}]
+   [:span name ", " major]])
 
 (defn education
   []
-  [:div.education
-   [:h2.header "Education"]
-   (map degree [{:name "Bachelor of Science"
-                 :major "Computer Science"
-                 :university "Grand Valley State University"}
-                {:name "Masters of Arts"
-                 :major "Data Science"
-                 :university "Western Michigan University"}])])
+  [:div.degrees
+    [:h2.header "Education"]
+    (map degree [{:name "B.S."
+                  :icon "assets/gv.jpg"
+                  :major "Computer Science"
+                  :university "Grand Valley State University"}])])
 
 (defn buzzwords
   []
@@ -47,25 +44,40 @@
     (for [buzz ["clojure"
                 "kafka"
                 "kubernetes"
-                "docker"
-                "database"
-                "streaming"
                 "python"
+                "docker"
+                "elasticsearch"
+                "rabbit"
+                "postgres"
+                "cassandra"
+                "CI / CD"
+                "git ops"
+                "aws"
                 "perl"
                 "javascript"]]
       [:span buzz])]])
 
+(defn contact-method
+  [{:keys [icon text]}]
+  [:div.method
+   [icon]
+   [:span text]])
+
 (defn sidebar
   []
   [:div.sidebar
-   [:img.portrait
-    {:src "assets/guy.png"}]
+   [:img.portrait {:src "assets/guy.png"}]
    [:div.contact
-    [:h2.header"Contact"]
+    [:h2.header "Contact"]
     [:div.methods
-     [:span [:a {:href "https://google.com"} "douglassdarin@gmail.com"]]
-     [:span "(616) 312 - 9313"]
-     [:span "Mattawan, MI"]]]
+     (map contact-method [{:icon :i.far.fa-envelope
+                           :text "douglassdarin@gmail.com"}
+                          {:icon :i.fas.fa-phone-alt
+                           :text "(616) 312 - 9313"}
+                          {:icon :i.fab.fa-github
+                           :text "beetdemguise"}
+                          {:icon :i.fab.fa-linkedin-in
+                           :text "darindouglass"}])]]
    (buzzwords)
    (education)])
 
@@ -85,24 +97,44 @@
   []
   [:div.experience
    [:h1.header "Experience"]
-   (for [job [{:title "Senior Software Engineer"
+   (for [job [{:title "Senior Software Engineer / Scrum Master"
                :company "Barracuda Networks"
                :team "Sonian"
                :from "Jan 2018"
                :to "now"
-               :responsibilities ["one" "two" "three"]}
+               :responsibilities
+               ["Maintain, observe, and improve a distributed system that handles tens of millions of email per day"
+                "Mentor junior developers through the learning curve of Clojure and our system"
+                "Implement actionable, observable structured logging into a previously opaque legacy system"
+                "Reimplemented previously-obtuse auditing service with well-defined, searchable user events"
+                "Design and implement a streaming service for removing customer information from custom and encrypted files"
+                "Removed expensive and complicated 3rd party rendering system with open-source tooling"
+                "Lead the team through architectural decisions, sprints, and retrospectives"
+                "Help coordinate bi-weekly movie/music/gaming nights for our entirely remote team"
+                "Develop data-driven, hierarchical definitions for our services running in Kubernetes"
+                "Coordinate with operations on 3rd party integrations (sensu, sumologic, ELK) and sunsetting of legacy deployment systems (Chef, EC2)"
+                "Manage CI / CD operations via Jenkins, Github Actions, Artifactory, and flux"]}
               {:title "Senior Software Engineer"
                :company "Barracuda Networks"
                :team "Cloud Archiving"
                :from "Aug 2015"
                :to "Jan 2018"
-               :responsibilities ["1" "2" "3"]}
-              {:title "Something"
+               :responsibilities
+               ["Simplified customer support experience with a python/Flask UI overlaying our system"
+                "Improved performance of per-customer statistics gathering"
+                "Helped maintain fleets of servers including Elasticsearch and Cassandra nodes"
+                "Worked with operations to improve and update our Puppet code"
+                "Reimplemented customer exports to provide better chunking, throughput, and checkpoint functionality"]}
+              {:title "Software Engineer I"
                :company "Dematic"
                :team "Sort"
-               :from "Apr 2014"
+               :from "Jan 2014"
                :to "Aug 2015"
-               :responsibilities ["1" "2" "3"]}]]
+               :responsibilities
+               ["Designed, commissioned, and tested extensive route-based, message-driven warehouse storage solutions"
+                "Interfaced with 3rd party warehouse management systems and conveyor systems"
+                "Optimized and refactord stored prodedures for use in multi-threaded operations"
+                "Collaborated with customers through the design and implementation of their warehouse solution"]}]]
      (job-description job))])
 
 (defn content

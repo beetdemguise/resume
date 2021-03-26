@@ -1,59 +1,149 @@
 * {
-  margin: auto;
-}
-
-html {
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  height: 100%;
-  width: 100%;
-}
-
-#app {
-  height: 100%;
-  width: 100%;
-}
-
-.resume {
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  background: #66E;
-  color: blue;
   margin: 0;
+  font-family: 'Raleway', sans-serif;
 }
 
 .header {
-  background: #6E6;
-  height: 20%;
-  line-height: 5;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  padding-bottom: 10px;
 }
 
-.header h1 {
-  display: inline;
+body {
+  background: ;
+  color: #34495E;
+  margin: 0;
+}
+
+.resume {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.resume .heading {
+  background: #D7B5F459;
+  text-align: center;
   padding: 10px;
-  padding-left: 25px;
 }
 
-.container {
-  height: 85%;
+.resume .heading .name {
+  font-size: 60px;
+  font-weight: 400;
 }
 
-.sidebar {
-  background: #6EE;
-  width: 30%;
-  height: 80%;
-  float: left;
+.resume .heading .title {
+  font-size: 24px;
+  letter-spacing: 5px;
 }
 
-.content {
-  background: #EE6;
-  width: 70%;
-  height: 80%;
-  margin-left: 30%;
+.resume .main {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 100%;
+}
+
+.resume .main .sidebar {
+  display: flex;
+  flex-direction: column;
+  background: ;
+  padding: 20px;
+  max-width: 250px;
+}
+
+.resume .main .sidebar .portrait {
+  height: 250px;
+  width: 250px;
+  padding-bottom: 20px;
+}
+
+.resume .main .sidebar .contact {
+  padding-bottom: 20px;
+}
+
+.resume .main .sidebar .contact .methods {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.resume .main .sidebar .contact .methods .method {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.resume .main .sidebar .contact .methods .method i {
+  margin-right: 20px;
+}
+
+.resume .main .sidebar .skills {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.resume .main .sidebar .skills .buzzy {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.resume .main .sidebar .skills .buzzy span {
+  flex-basis: 45%;
+  padding: 5px;
+}
+
+.resume .main .degrees {
+  padding-bottom: 20px;
+}
+
+.resume .main .degrees .degree2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.resume .main .degrees .degree2 img {
+  margin-right: 19px;
+  margin-left: 6px;
+  height: 25px;
+}
+
+.resume .main .degrees .degree2 span {
+  display: block;
+}
+
+.resume .main .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-grow: 2;
+  background: ;
+  padding: 20px;
+}
+
+.resume .main .content .experience {
+  padding-bottom: 20px;
+}
+
+.resume .main .content .experience .job {
+  padding-bottom: 20px;
+}
+
+.resume .main .content .experience .job .title {
+  font-size: 24px;
+}
+
+.resume .main .content .experience .job .description {
+
+}
+
+.resume .main .content .experience .job .description .company.team {
+  font-size: 14px;
+}
+
+.resume .main .content .experience .job .description .from.to {
+  font-size: 14px;
 }

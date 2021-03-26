@@ -21,11 +21,10 @@
 (def sidebar-width (+ portrait-width standard-padding standard-padding 5))
 
 (def backgrounds
-  #_{:body "#66E"
-   :header "#6E6"
-   :sidebar "#6EE"
-   :content "#EE6"}
-  {})
+  {:body ""
+   :header "#D7B5F459"
+   :sidebar ""
+   :content ""})
 
 #_(defstyles screen
   [:* {:margin "auto"
@@ -84,7 +83,8 @@
   [:* {:margin 0
        :font-family "'Raleway', sans-serif"}]
   [:.header {:text-transform "uppercase"
-             :letter-spacing (pixels 5)}]
+             :letter-spacing (pixels 5)
+             :padding-bottom (pixels small-padding)}]
   [:body {:background (:body backgrounds)
           :color "#34495E"
           :margin 0}]
@@ -94,7 +94,7 @@
              :justify-content "space-between"}
    [:.heading {:background (:header backgrounds)
                :text-align "center"
-               :padding (pixels standard-padding)}
+               :padding (pixels small-padding)}
     [:.name {:font-size (pixels 60)
              :font-weight 400}]
     [:.title {:font-size (pixels 24)
@@ -108,6 +108,7 @@
                 :background (:sidebar backgrounds)
                 :padding (pixels standard-padding)
                 :max-width (pixels portrait-width)
+                ;;:margin-left (pixels 50)
                 ;; :width (pixels sidebar-width)
                 ;; :height (percent 100)
                 ;; :float "left"
@@ -119,35 +120,44 @@
      [:.portrait {:height (pixels portrait-height)
                   :width (pixels portrait-width)
                   :padding-bottom (pixels standard-padding)}]
-     [:.contact {:padding-bottom (pixels small-padding)}
+     [:.contact {:padding-bottom (pixels standard-padding)}
       [:.methods {:display "flex"
                   :flex-direction "column"
-                  :justify-content "space-evenly"
-                  :text-align "center"}
-       [:span {:padding (pixels small-padding)}]]]
+                  :justify-content "space-evenly"}
+       [:.method {:display "flex"
+                  :align-items "center"
+                  :padding (pixels small-padding)}
+        [:i {:margin-right (pixels standard-padding)}]]]]
      [:.skills {:display "flex"
                 :flex-direction "column"
-                :padding-bottom (pixels small-padding)}
+                :padding-bottom (pixels standard-padding)}
       [:.buzzy {:display "flex"
                 :flex-flow "row wrap"}
        [:span {:flex-basis (percent 45)
-               :padding (pixels smaller-padding)}]]]
-     [:.education {:display "flex"
-                   :flex-direction "column"}
-      [:.degree {:padding-bottom (pixels small-padding)}
-       [:span {:display "block"}]]]]
+               :padding (pixels smaller-padding)}]]]]
+    [:.degrees {:padding-bottom (pixels standard-padding)}
+     [:.degree2 {:display "flex"
+                 :flex-direction "row"
+                 :align-items "center"}
+      [:img {:margin-right (pixels (dec standard-padding))
+             :margin-left (pixels (inc smaller-padding))
+             :height (pixels 25)}]
+      [:span {:display "block"}]]]
     [:.content {:display "flex"
                 :flex-direction "column"
                 :justify-content "flex-start"
                 :flex-grow 2
                 :background (:content backgrounds)
                 :padding (pixels standard-padding)}
-     [:.experience {
-                    :padding-bottom (pixels standard-padding)}
-      [:.job {:padding-top (pixels standard-padding)
-              :padding-bottom (pixels standard-padding)}
+     [:.experience {:padding-bottom (pixels standard-padding)}
+      [:.job {:padding-bottom (pixels standard-padding)}
        [:.title {:font-size (pixels 24)}]
        [:.description { ;;:padding (pixels smaller-padding)
                        }
         [:.company.team {:font-size (pixels 14)}]
-        [:.from.to {:font-size (pixels 14)}]]]]]]])
+        [:.from.to {:font-size (pixels 14)}]]]]
+     #_[:.education {:display "flex"
+                     :flex-direction "column"}
+        [:.degree {:padding-bottom (pixels small-padding)}
+         [:i {:margin-right (pixels standard-padding)}]
+         [:span {:display "block"}]]]]]])
