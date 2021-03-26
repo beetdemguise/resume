@@ -64,7 +64,7 @@
 (defn sidebar
   []
   [:div.sidebar
-   [:img.portrait {:src "assets/my-pretty-face.jpg"}]
+   [:img.portrait {:src "https://avatars.githubusercontent.com/u/3887412"}]
    (contact-info)
    (education)
    (hobbies)])
