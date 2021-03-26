@@ -1,5 +1,6 @@
 (ns resume.views
-  (:require [re-frame.core :as re]
+  (:require [clojure.set :as set]
+            [re-frame.core :as re]
             [resume.subs :as subs]))
 
 (defn main-panel []
@@ -7,142 +8,104 @@
     [:div
      [:h1 "Hello from " @name]]))
 
-(defn flex-box
-  [direction & tags]
-  (let [tag (if (= :row direction)
-              :div.flex.row
-              :div.flex.column)]
-    [tag
-     tags]))
-
 (defn heading
   []
   [:div.heading
-   [:p.name.header "Darin Douglass"]
-   [:p.title "Software Engineer"]])
+   [:p.name.header @(re/subscribe [::subs/name])]
+   [:p.title @(re/subscribe [::subs/title])]])
 
 (defn degree
-  [{:keys [icon name major]}]
-  [:div.degree2
-   [:img {:src icon}]
+  [{:keys [icon name major university]}]
+  [:div.degree {:key icon}
+   [:img {:src icon :alt university :title university}]
    [:span name ", " major]])
 
 (defn education
   []
   [:div.degrees
-    [:h2.header "Education"]
-    (map degree [{:name "B.S."
-                  :icon "assets/gv.jpg"
-                  :major "Computer Science"
-                  :university "Grand Valley State University"}])])
+   [:h2.header "Education"]
+   (map degree @(re/subscribe [::subs/degrees]))])
+
+(defn hobbies
+  []
+  [:div.hobbies
+   [:h2.header "Hobbies"]
+   (for [hobby @(re/subscribe [::subs/hobbies])]
+     (let [{:keys [text href] :as attrs} (if (map? hobby) hobby {:text hobby})
+           tag (if href :a :span)]
+       [tag (assoc attrs
+                   :key text
+                   :target "_blank") text]))])
 
 (defn buzzwords
-  []
+  [{:keys [buzzwords]}]
   [:div.skills
    [:h2.header "Buzzwords"]
    [:div.buzzy
-    (for [buzz ["clojure"
-                "kafka"
-                "kubernetes"
-                "python"
-                "docker"
-                "elasticsearch"
-                "streaming"
-                "rabbit"
-                "postgres"
-                "cassandra"
-                "CI / CD"
-                "emacs / cider"
-                "git ops"
-                "aws"
-                "perl"
-                "javascript"]]
-      [:span buzz])]])
+    (for [buzz @(re/subscribe [::subs/buzzwords])]
+      [:div [:span {:key buzz
+                    :class (when (contains? buzzwords buzz) "highlighted")
+                    :onMouseEnter #(re/dispatch [:start-hover-buzz buzz])
+                    :onMouseLeave #(re/dispatch [:stop-hover-buzz buzz])}
+             buzz]])]])
 
 (defn contact-method
   [{:keys [icon text]}]
-  [:div.method
+  [:div.method {:key icon}
    [icon]
    [:span text]])
+
+(defn contact-info
+  []
+  [:div.contact
+   [:div.methods
+    (map contact-method @(re/subscribe [::subs/contact]))]])
 
 (defn sidebar
   []
   [:div.sidebar
    [:img.portrait {:src "assets/my-pretty-face.jpg"}]
-   [:div.contact
-    [:div.methods
-     (map contact-method [{:icon :i.far.fa-envelope
-                           :text "douglassdarin@gmail.com"}
-                          {:icon :i.fas.fa-phone-alt
-                           :text "(616) 312 - 9313"}
-                          {:icon :i.fab.fa-github
-                           :text "beetdemguise"}
-                          {:icon :i.fab.fa-linkedin-in
-                           :text "darindouglass"}])]]
-   (buzzwords)
-   (education)])
+   (contact-info)
+   (education)
+   (hobbies)])
 
 (defn job-description
-  [{:keys [title company team from to responsibilities]}]
-  [:div.job
+  [{:keys [job buzzwords]} i {:keys [title company team from to responsibilities]}]
+  [:div.job {:key (str company team)}
    [:span.title title]
    [:p.description
     [:strong [:span.company company] " / " [:span.team team]]
     [:br]
     [:span.range [:span.from from] " - " [:span.to to]]]
    [:ul
-    (for [item responsibilities]
-      [:li item])]])
+    (map-indexed
+     (fn [j {:keys [text tags]}]
+       (let [key [i j]]
+         [:li {:key key
+               :class (when (or
+                             ;; am i highlighted?
+                             (= key job)
+                             ;; is one of my tags highlighted?
+                             (and (nil? job)
+                                  (not-empty (set/intersection tags buzzwords))))
+                        "highlighted")
+               :onMouseEnter #(re/dispatch [:start-hover-job key tags])
+               :onMouseLeave #(re/dispatch [:stop-hover-job key])}
+          text]))
+      responsibilities)]])
 
 (defn experience
   []
   [:div.experience
-   [:h1.header "Experience"]
-   (for [job [{:title "Senior Software Engineer / Scrum Master"
-               :company "Barracuda Networks"
-               :team "Sonian"
-               :from "Jan 2018"
-               :to "now"
-               :responsibilities
-               ["Maintain, observe, and improve a distributed system that handles tens of millions of email per day"
-                "Mentor junior developers through the learning curve of Clojure and our system"
-                "Implement actionable, observable structured logging into a previously opaque legacy system"
-                "Reimplemented previously-obtuse auditing service with well-defined, searchable user events"
-                "Design and implement a streaming service for removing customer information from custom and encrypted files"
-                "Removed expensive and complicated 3rd party rendering system with open-source tooling"
-                "Lead the team through architectural decisions, sprints, and retrospectives"
-                "Help coordinate bi-weekly movie/music/gaming nights for our entirely remote team"
-                "Develop data-driven, hierarchical definitions for our services running in Kubernetes"
-                "Coordinate with operations on 3rd party integrations (sensu, sumologic, ELK) and sunsetting of legacy deployment systems (Chef, EC2)"
-                "Manage CI / CD operations via Jenkins, Github Actions, Artifactory, and flux"]}
-              {:title "Senior Software Engineer"
-               :company "Barracuda Networks"
-               :team "Cloud Archiving"
-               :from "Aug 2015"
-               :to "Jan 2018"
-               :responsibilities
-               ["Simplified customer support experience with a python/Flask UI overlaying our system"
-                "Improved performance of per-customer statistics gathering"
-                "Helped maintain fleets of servers including Elasticsearch and Cassandra nodes"
-                "Worked with operations to improve and update our Puppet code"
-                "Reimplemented customer exports to provide better chunking, throughput, and checkpoint functionality"]}
-              {:title "Software Engineer I"
-               :company "Dematic"
-               :team "Sort"
-               :from "Jan 2014"
-               :to "Aug 2015"
-               :responsibilities
-               ["Designed, commissioned, and tested extensive route-based, message-driven warehouse storage solutions"
-                "Interfaced with 3rd party warehouse management systems and conveyor systems"
-                "Optimized and refactord stored prodedures for use in multi-threaded operations"
-                "Collaborated with customers through the design and implementation of their warehouse solution"]}]]
-     (job-description job))])
+   [:h2.header "Experience"]
+   (map-indexed (partial job-description @(re/subscribe [::subs/highlights])) @(re/subscribe [::subs/jobs]))])
 
 (defn content
   []
   [:div.main
    (sidebar)
    [:div.content
+    (buzzwords @(re/subscribe [::subs/highlights]))
     (experience)]])
 
 (defn resume

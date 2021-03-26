@@ -3,9 +3,16 @@
   font-family: 'Raleway', sans-serif;
 }
 
+.highlighted {
+  font-weight: bold;
+  color: #BF89ED;
+  cursor: default;
+}
+
 body {
   background: ;
   color: #34495E;
+  width: 100%;
   margin: auto;
 }
 
@@ -23,7 +30,7 @@ body {
 }
 
 .resume .heading {
-  background: #D7B5F459;
+  background: #BF89ED6B;
   text-align: center;
   padding: 10px;
 }
@@ -43,6 +50,39 @@ body {
   flex-direction: row;
   align-items: stretch;
   height: 100%;
+}
+
+.resume .main .skills {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.resume .main .skills .buzzy {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.resume .main .skills .buzzy div {
+  width: 135px;
+}
+
+.resume .main .skills .buzzy div span {
+  font-size: 14px;
+}
+
+.resume .main .hobbies {
+  padding-top: 20px;
+}
+
+.resume .main .hobbies a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.resume .main .hobbies span, .resume .main .hobbies a {
+  display: block;
+  padding-bottom: 10px;
 }
 
 .resume .main .sidebar {
@@ -79,39 +119,24 @@ body {
   margin-right: 20px;
 }
 
-.resume .main .sidebar .skills {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 20px;
-}
-
-.resume .main .sidebar .skills .buzzy {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.resume .main .sidebar .skills .buzzy span {
-  flex-basis: 45%;
-  padding: 5px;
-}
-
 .resume .main .degrees {
+  padding-top: 20px;
   padding-bottom: 20px;
 }
 
-.resume .main .degrees .degree2 {
+.resume .main .degrees .degree {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.resume .main .degrees .degree2 img {
+.resume .main .degrees .degree img {
   margin-right: 19px;
   margin-left: 6px;
   height: 25px;
 }
 
-.resume .main .degrees .degree2 span {
+.resume .main .degrees .degree span {
   display: block;
 }
 
@@ -134,10 +159,6 @@ body {
 
 .resume .main .content .experience .job .title {
   font-size: 24px;
-}
-
-.resume .main .content .experience .job .description {
-
 }
 
 .resume .main .content .experience .job .description .company.team {

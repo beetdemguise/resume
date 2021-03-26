@@ -22,66 +22,16 @@
 
 (def backgrounds
   {:body ""
-   :header "#D7B5F459"
+   :header "#BF89ED6B"
    :sidebar ""
    :content ""})
-
-#_(defstyles screen
-  [:* {:margin "auto"
-       :font-family "'Raleway', sans-serif"}]
-  [:html full]
-  [:body full]
-  [:#app full]
-  [:.resume full]
-  [:body {:background (:body backgrounds)
-          :color "blue"
-          :margin 0}]
-  [:.header {:background (:header backgrounds)
-             ;;:height (percent header-height)
-             :text-align "center"
-             ;;:line-height 5
-             }
-   [:.name {:font-size (pixels 85)
-            :letter-spacing (pixels 10)
-            :font-weight 400
-            :padding (pixels standard-padding)
-            :padding-bottom 0}]
-   [:.title {:font-size (pixels 24)
-             :letter-spacing (pixels 5)}]]
-  [:.container {:height "85%"}]
-  [:.sidebar {:background (:sidebar backgrounds)
-              :width (pixels sidebar-width)
-              :height (percent 100)
-              :float "left"
-              :text-align "center"
-              ;; :margin-top (pixels standard-padding)
-              ;; :margin-bottom (pixels standard-padding)
-              ;:border-right "2px solid #EEE"
-              }
-   [:.portrait {:height (pixels portrait-height)
-                :width (pixels portrait-width)
-                :padding (pixels standard-padding)}]
-   [:.contact {:padding (pixels small-padding)}]
-   [:.skills {:padding (pixels small-padding)}]]
-  [:.main {:height "100%"}
-   [:.content {:margin-left (pixels sidebar-width)
-               :background (:content backgrounds)
-               ;; :width (percent (- 100 sidebar-width))
-               :height (percent 100)
-               :padding (pixels standard-padding)
-               ;;:border-top "2px solid #EEE"
-               }
-    [:.experience {:padding-bottom (pixels small-padding)}
-     [:.job {:padding (pixels small-padding)}
-      [:.title {:font-size (pixels 24)}]
-      [:.description {:padding (pixels smaller-padding)}
-       [:.company.team {:font-size (pixels 14)}]
-       [:.from.to {:font-size (pixels 14)}]]]]
-    [:.education {:padding-top (pixels small-padding)}]]])
 
 (defstyles screen
   [:* {:margin 0
        :font-family "'Raleway', sans-serif"}]
+  [:.highlighted {:font-weight "bold"
+                  :color "#BF89ED"
+                  :cursor "default"}]
   [:body {:background (:body backgrounds)
           :color "#34495E"
           ;; :max-width (pixels 1100)
@@ -105,6 +55,18 @@
             :flex-direction "row"
             :align-items "stretch"
             :height "100%"}
+    [:.skills {:display "flex"
+               :flex-direction "column"
+               :padding-bottom (pixels standard-padding)}
+     [:.buzzy {:display "flex"
+               :flex-flow "row wrap"}
+      [:div {:width (pixels 135)}
+       [:span {:font-size (pixels 14)}]]]]
+    [:.hobbies {:padding-top (pixels standard-padding)}
+     [:a {:text-decoration "none"
+          :color "inherit"}]
+     [:span :a {:display "block"
+                :padding-bottom (pixels small-padding)}]]
     [:.sidebar {:display "flex"
                 :flex-direction "column"
                 :background (:sidebar backgrounds)
@@ -120,6 +82,8 @@
                 }
      [:.portrait {:height (pixels portrait-height)
                   :width (pixels portrait-width)
+                  ;; :margin-right (pixels 25)
+                  ;; :margin-left (pixels 25)
                   :padding-bottom (pixels standard-padding)}]
      [:.contact {:padding-bottom (pixels standard-padding)}
       [:.methods {:display "flex"
@@ -128,18 +92,12 @@
        [:.method {:display "flex"
                   :align-items "center"
                   :padding (pixels small-padding)}
-        [:i {:margin-right (pixels standard-padding)}]]]]
-     [:.skills {:display "flex"
-                :flex-direction "column"
+        [:i {:margin-right (pixels standard-padding)}]]]]]
+    [:.degrees {:padding-top (pixels standard-padding)
                 :padding-bottom (pixels standard-padding)}
-      [:.buzzy {:display "flex"
-                :flex-flow "row wrap"}
-       [:span {:flex-basis (percent 45)
-               :padding (pixels smaller-padding)}]]]]
-    [:.degrees {:padding-bottom (pixels standard-padding)}
-     [:.degree2 {:display "flex"
-                 :flex-direction "row"
-                 :align-items "center"}
+     [:.degree {:display "flex"
+                :flex-direction "row"
+                :align-items "center"}
       [:img {:margin-right (pixels (dec standard-padding))
              :margin-left (pixels (inc smaller-padding))
              :height (pixels 25)}]
@@ -153,12 +111,6 @@
      [:.experience {:padding-bottom (pixels standard-padding)}
       [:.job {:padding-bottom (pixels standard-padding)}
        [:.title {:font-size (pixels 24)}]
-       [:.description { ;;:padding (pixels smaller-padding)
-                       }
+       [:.description
         [:.company.team {:font-size (pixels 14)}]
-        [:.from.to {:font-size (pixels 14)}]]]]
-     #_[:.education {:display "flex"
-                     :flex-direction "column"}
-        [:.degree {:padding-bottom (pixels small-padding)}
-         [:i {:margin-right (pixels standard-padding)}]
-         [:span {:display "block"}]]]]]])
+        [:.from.to {:font-size (pixels 14)}]]]]]]])
