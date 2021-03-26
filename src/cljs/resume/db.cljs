@@ -66,7 +66,7 @@
                    :responsibilities
                    (add-emacs
                     [{:tags #{"clojure" "javascript" "distributed systems" "elasticsearch" "performance" "postgres" "rabbit" "aws"}
-                      :text "Maintain, observe, and improve a distributed system that handles tens of millions of email per day"}
+                      :text "Maintain, observe, and improve a distributed system that handles millions of email per day"}
                      {:tags #{"clojure" "team-building" "distributed systems" "observability"}
                       :text "Mentor junior developers through the learning curve of Clojure and our system"}
                      {:tags #{"clojure" "observability" "docker" "performance"}
