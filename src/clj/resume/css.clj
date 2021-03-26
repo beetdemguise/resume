@@ -82,12 +82,14 @@
 (defstyles screen
   [:* {:margin 0
        :font-family "'Raleway', sans-serif"}]
+  [:body {:background (:body backgrounds)
+          :color "#34495E"
+          ;; :max-width (pixels 1100)
+          :width (percent 100)
+          :margin "auto"}]
   [:.header {:text-transform "uppercase"
              :letter-spacing (pixels 5)
              :padding-bottom (pixels small-padding)}]
-  [:body {:background (:body backgrounds)
-          :color "#34495E"
-          :margin 0}]
   [:.resume {:display "flex"
              :flex-direction "column"
              :align-items "stretch"
@@ -108,7 +110,6 @@
                 :background (:sidebar backgrounds)
                 :padding (pixels standard-padding)
                 :max-width (pixels portrait-width)
-                ;;:margin-left (pixels 50)
                 ;; :width (pixels sidebar-width)
                 ;; :height (percent 100)
                 ;; :float "left"

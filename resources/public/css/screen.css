@@ -3,16 +3,16 @@
   font-family: 'Raleway', sans-serif;
 }
 
+body {
+  background: ;
+  color: #34495E;
+  margin: auto;
+}
+
 .header {
   text-transform: uppercase;
   letter-spacing: 5px;
   padding-bottom: 10px;
-}
-
-body {
-  background: ;
-  color: #34495E;
-  margin: 0;
 }
 
 .resume {

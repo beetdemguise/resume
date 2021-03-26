@@ -47,10 +47,12 @@
                 "python"
                 "docker"
                 "elasticsearch"
+                "streaming"
                 "rabbit"
                 "postgres"
                 "cassandra"
                 "CI / CD"
+                "emacs / cider"
                 "git ops"
                 "aws"
                 "perl"
@@ -66,9 +68,8 @@
 (defn sidebar
   []
   [:div.sidebar
-   [:img.portrait {:src "assets/guy.png"}]
+   [:img.portrait {:src "assets/my-pretty-face.jpg"}]
    [:div.contact
-    [:h2.header "Contact"]
     [:div.methods
      (map contact-method [{:icon :i.far.fa-envelope
                            :text "douglassdarin@gmail.com"}
