@@ -30,7 +30,7 @@
                       :text "Reading thick books"}
                      {:href "https://www.youtube.com/watch?v=_CI-0E_jses"
                       :text "Playing jazz music"}
-                     {:href "https://www.youtube.com/watch?v=bXZhTb0eUqA"
+                     {:href "https://www.youtube.com/watch?v=bXZhTb0eUqA&t=118s"
                       :text "Playing long video games"}]
            :buzzwords
            [;; languages
