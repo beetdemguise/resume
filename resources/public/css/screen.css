@@ -3,6 +3,11 @@
   font-family: 'Raleway', sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .highlighted {
   font-weight: bold;
   color: #BF89ED;
@@ -73,11 +78,6 @@ body {
 
 .resume .main .hobbies {
   padding-top: 20px;
-}
-
-.resume .main .hobbies a {
-  text-decoration: none;
-  color: inherit;
 }
 
 .resume .main .hobbies span, .resume .main .hobbies a {

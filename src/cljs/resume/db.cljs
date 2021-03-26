@@ -11,13 +11,16 @@
    :_info {:name "Darin Douglass"
            :title "Software Engineer"
            :contact-methods [{:icon :i.far.fa-envelope
+                              :href "mailto:douglassdarin@gmail.com"
                               :text "douglassdarin@gmail.com"}
                              {:icon :i.fas.fa-phone-alt
                               :text "(616) 312 - 9313"}
                              {:icon :i.fab.fa-github
-                              :text "beetdemguise"}
+                              :href "https://github.com/darindouglass"
+                              :text "darindouglass"}
                              {:icon :i.fab.fa-linkedin-in
-                              :text "darindouglass"}]
+                              :href "https://linkedin.com/in/darin-douglass-57400158/"
+                              :text "darin-douglass"}]
            :degrees [{:name "B.S."
                       :icon "assets/gv.jpg"
                       :major "Computer Science"

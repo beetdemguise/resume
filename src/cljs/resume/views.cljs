@@ -50,10 +50,14 @@
              buzz]])]])
 
 (defn contact-method
-  [{:keys [icon text]}]
-  [:div.method {:key icon}
-   [icon]
-   [:span text]])
+  [{:keys [icon text href] :as attrs}]
+  (let [tag (if href :a :span)]
+    [:div.method {:key icon}
+     [icon]
+     [tag (assoc attrs
+                   :key text
+                   :target "_blank")
+      text]]))
 
 (defn contact-info
   []

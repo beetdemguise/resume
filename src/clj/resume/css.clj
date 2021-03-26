@@ -29,11 +29,14 @@
 (defstyles screen
   [:* {:margin 0
        :font-family "'Raleway', sans-serif"}]
+  [:a {:text-decoration "none"
+       :color "inherit"}]
   [:.highlighted {:font-weight "bold"
                   :color "#BF89ED"
                   :cursor "default"}]
   [:body {:background (:body backgrounds)
           :color "#34495E"
+          ;; :max-width (pixels 1100)
           :width (percent 100)
           :margin "auto"}]
   [:.header {:text-transform "uppercase"
@@ -62,8 +65,6 @@
       [:div {:width (pixels 135)}
        [:span {:font-size (pixels 14)}]]]]
     [:.hobbies {:padding-top (pixels standard-padding)}
-     [:a {:text-decoration "none"
-          :color "inherit"}]
      [:span :a {:display "block"
                 :padding-bottom (pixels small-padding)}]]
     [:.sidebar {:display "flex"
