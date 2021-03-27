@@ -41,3 +41,10 @@
  ::highlights
  (fn [{:keys [highlights]}]
    highlights))
+
+(re/reg-sub
+ ::reading-hobby-text
+ (fn [{:keys [book-hovered?]}]
+   (if book-hovered?
+     "The Wheel weaves as The Wheel wills"
+     "Reading thick books")))

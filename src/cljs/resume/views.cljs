@@ -30,12 +30,17 @@
   []
   [:div.hobbies
    [:h2.header "Hobbies"]
-   (for [hobby @(re/subscribe [::subs/hobbies])]
-     (let [{:keys [text href] :as attrs} (if (map? hobby) hobby {:text hobby})
-           tag (if href :a :span)]
-       [tag (assoc attrs
-                   :key text
-                   :target "_blank") text]))])
+   (let [reading-text @(re/subscribe [::subs/reading-hobby-text])]
+     (cons
+      [:span {:onMouseEnter #(re/dispatch [:start-reading-hover])
+              :onMouseLeave #(re/dispatch [:stop-reading-hover])}
+       reading-text]
+      (for [hobby @(re/subscribe [::subs/hobbies])]
+        (let [{:keys [text href] :as attrs} (if (map? hobby) hobby {:text hobby})
+              tag (if href :a :span)]
+          [tag (assoc attrs
+                      :key text
+                      :target "_blank") text]))))])
 
 (defn buzzwords
   [{:keys [buzzwords]}]

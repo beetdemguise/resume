@@ -22,7 +22,7 @@
 
 (def backgrounds
   {:body ""
-   :header "#BF89ED6B"
+   :header ""
    :sidebar ""
    :content ""})
 
@@ -36,7 +36,7 @@
                   :cursor "default"}]
   [:body {:background (:body backgrounds)
           :color "#34495E"
-          ;; :max-width (pixels 1100)
+          :max-width (pixels 1100)
           :width (percent 100)
           :margin "auto"}]
   [:.header {:text-transform "uppercase"
@@ -74,6 +74,7 @@
                 :max-width (pixels portrait-width)}
      [:.portrait {:height (pixels portrait-height)
                   :width (pixels portrait-width)
+                  :border-radius (percent 50)
                   :padding-bottom (pixels standard-padding)}]
      [:.contact {:padding-bottom (pixels standard-padding)}
       [:.methods {:display "flex"
@@ -88,8 +89,8 @@
      [:.degree {:display "flex"
                 :flex-direction "row"
                 :align-items "center"}
-      [:img {:margin-right (pixels (dec standard-padding))
-             :margin-left (pixels (inc smaller-padding))
+      [:img {:margin-right (pixels smaller-padding)
+             :margin-left (pixels smaller-padding)
              :height (pixels 25)}]
       [:span {:display "block"}]]]
     [:.content {:display "flex"

@@ -14,6 +14,16 @@
    (update-in coeffects [:db :highlights] merge {:job job :buzzwords buzzwords})))
 
 (re/reg-event-fx
+ :start-reading-hover
+ (fn [coeffects [_]]
+   (assoc-in coeffects [:db :book-hovered?] true)))
+
+(re/reg-event-fx
+ :stop-reading-hover
+ (fn [coeffects [_]]
+   (assoc-in coeffects [:db :book-hovered?] false)))
+
+(re/reg-event-fx
  :stop-hover-job
  (fn [coeffects [_ job]]
    (let [{hovered :job} (-> coeffects :db :highlights)]

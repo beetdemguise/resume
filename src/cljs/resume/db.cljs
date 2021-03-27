@@ -26,8 +26,6 @@
                       :major "Computer Science"
                       :university "Grand Valley State University"}]
            :hobbies ["Playing with my kids"
-                     {:title "The Wheel weaves as The Wheel wills"
-                      :text "Reading thick books"}
                      {:href "https://www.youtube.com/watch?v=_CI-0E_jses"
                       :text "Playing jazz music"}
                      {:href "https://www.youtube.com/watch?v=bXZhTb0eUqA&t=118s"
