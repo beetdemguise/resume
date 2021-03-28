@@ -46,5 +46,6 @@
  ::reading-hobby-text
  (fn [{:keys [book-hovered?]}]
    (if book-hovered?
-     "The Wheel weaves as The Wheel wills"
+     (rand-nth ["The Wheel weaves as The Wheel wills"
+                "Journey before destination"])
      "Reading thick books")))

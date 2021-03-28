@@ -65,10 +65,12 @@
                    (add-emacs
                     [{:tags #{"clojure" "javascript" "distributed systems" "elasticsearch" "performance" "postgres" "rabbit" "aws"}
                       :text "Maintain, observe, and improve a distributed system that handles millions of email per day"}
+                     {:tags #{"clojure" "kubernetes" "docker" "aws" "CI / CD" "git ops"}
+                      :text "Develop a data-driven, manifest generation tool for Kubernetes resources"}
                      {:tags #{"clojure" "team-building" "distributed systems" "observability"}
                       :text "Mentor junior developers through the learning curve of Clojure and our system"}
                      {:tags #{"clojure" "observability" "docker" "performance"}
-                      :text "Implement action-able and structured logging into a previously opaque legacy system"}
+                      :text "Implement structured, action-able logging into a previously opaque legacy system"}
                      {:tags #{"clojure" "kafka" "kubernetes" "postgres" "streaming"}
                       :text "Reimplement previously-obtuse auditing service with well-defined, search-able user events"}
                      {:tags #{"clojure" "distributed systems" "kafka" "performance" "postgres" "elasticsearch" "streaming"}
@@ -79,8 +81,6 @@
                       :text "Lead the team through architectural decisions, sprints, and retrospectives"}
                      {:tags #{"team-building" "distributed systems"}
                       :text "Help coordinate bi-weekly movie/gaming nights for our entirely remote team"}
-                     {:tags #{"clojure" "kubernetes" "docker" "aws" "CI / CD" "git ops"}
-                      :text "Develop a data-driven, manifest generation tool for Kubernetes resources"}
                      {:tags #{"ergonomics" "git ops" "aws" "kubernetes" "docker" "CI / CD"}
                       :text "Coordinate with operations on 3rd party integrations (sensu, sumologic, ELK) and sun-setting of legacy deployment systems (Chef, EC2)"}
                      {:tags #{"ergonomics" "CI / CD" "git ops"}
@@ -101,7 +101,7 @@
                      {:tags #{"CI / CD" "ergonomics" "perl"}
                       :text "Worked with operations to improve and update our Puppet code"}
                      {:tags #{"python" "observability" "javascript" "perl" "cassandra" "elasticsearch"}
-                      :text "Reimplemented customer exports to provide better chunking, throughput, and checkpoint functionality"}])}
+                      :text "Reimplemented customer exports to provide better chunking, throughput, and checkpointing"}])}
                   {:title "Software Engineer I"
                    :company "Dematic"
                    :team "Sort"
