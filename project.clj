@@ -22,7 +22,7 @@
   :garden {:builds [{:id "screen"
                      :source-paths ["src/clj"]
                      :stylesheet resume.css/screen
-                     :compiler {:output-to "resources/public/css/screen.css"
+                     :compiler {:output-to "screen.css"
                                 :pretty-print? true}}]}
   :shadow-cljs {:nrepl {:port 8777}
                 :builds {:app {:target :browser

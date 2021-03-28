@@ -25,18 +25,30 @@
          (println "Closing repl")
          (println @(p/destroy repl))))))
 
-(defn export!
+(defn- compile-resume
   []
   (println "Compiling resume")
-  (p/check (p/process '[lein shadow release app] {:out :inherit}))
+  (p/check (p/process '[lein shadow release app] {:out :inherit})))
+
+(defn export!
+  []
+  (compile-resume)
   (println "Exporting PDF")
   (p/check (p/process '[node bin/export-pdf.js] {:out :inherit}))
   (println "Done!"))
 
+(defn release!
+  []
+  (compile-resume)
+  (println "Copying JS")
+  (p/check (p/process '[cp "resources/public/js/compiled/app.js" "."] {:out :inherit}))
+  (println "Done!"))
+
 (defn -main
   [& [command]]
-  (if (= "export" command)
-    (export!)
+  (case command
+    "export" (export!)
+    "release" (release!)
     (run-dev!)))
 
 (when (System/getProperty "babashka.file")
