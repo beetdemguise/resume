@@ -37,18 +37,10 @@
   (p/check (p/process '[node bin/export-pdf.js] {:out :inherit}))
   (println "Done!"))
 
-(defn release!
-  []
-  (compile-resume)
-  (println "Copying JS")
-  (p/check (p/process '[cp "resources/public/js/compiled/app.js" "."] {:out :inherit}))
-  (println "Done!"))
-
 (defn -main
   [& [command]]
   (case command
     "export" (export!)
-    "release" (release!)
     (run-dev!)))
 
 (when (System/getProperty "babashka.file")

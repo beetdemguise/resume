@@ -26,8 +26,8 @@
                                 :pretty-print? true}}]}
   :shadow-cljs {:nrepl {:port 8777}
                 :builds {:app {:target :browser
-                               :output-dir "resources/public/js/compiled"
-                               :asset-path "/js/compiled"
+                               :output-dir "."
+                               :asset-path "."
                                :modules {:app {:init-fn resume.core/init
                                                :preloads [devtools.preload
                                                           day8.re-frame-10x.preload]}}
