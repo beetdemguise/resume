@@ -13,7 +13,7 @@
            :contact-methods [{:icon :i.far.fa-envelope
                               :href "mailto:douglassdarin+resume@gmail.com"
                               :text "douglassdarin@gmail.com"}
-                             {:icon :i.fas.fa-phone-alt
+                             {:icon :i.fas.fa-phone
                               :text "(616) 312 - 9313"}
                              {:icon :i.fab.fa-github
                               :href "https://github.com/darindouglass"
@@ -22,7 +22,7 @@
                               :href "https://linkedin.com/in/darin-douglass-57400158/"
                               :text "darin-douglass"}]
            :degrees [{:name "B.S."
-                      :icon "assets/gv.jpg"
+                      :icon "gv.jpg"
                       :major "Computer Science"
                       :university "Grand Valley State University"}]
            :hobbies ["Playing with my kids"

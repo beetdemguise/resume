@@ -20,3 +20,6 @@
 
 package.json
 package-lock.json
+/cljs-runtime
+manifest.edn
+resume.pdf

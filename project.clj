@@ -36,7 +36,7 @@
                                :release {:build-options
                                          {:ns-aliases
                                           {day8.re-frame.tracing day8.re-frame.tracing-stubs}}}
-                               :devtools {:http-root "resources/public"
+                               :devtools {:http-root "."
                                           :http-port 8280}}}}
   :shell {:commands {"karma" {:windows ["cmd" "/c" "karma"]
                               :default-command "karma"}
