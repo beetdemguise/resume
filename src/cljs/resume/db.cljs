@@ -5,11 +5,17 @@
   [responsibilities]
   (map #(update % :tags conj "emacs / cider") responsibilities))
 
+(defn add-data
+  "Adds all data tags to responsibilitis."
+  [responsibilities]
+  (let [tags ["clojure" "babashka" "python" "dbt" "data" "data warehouse" "glue" "redshift" "terraform" "dbt"]]
+    (map #(update % :tags concat tags) responsibilities)))
+
 (def default-db
   {:highlights {:job nil
                 :buzzwords nil}
    :_info {:name "Darin Douglass"
-           :title "Software Engineer"
+           :title "Principal Software Engineer"
            :contact-methods [{:icon :i.far.fa-envelope
                               :href "mailto:douglassdarin+resume@gmail.com"
                               :text "douglassdarin@gmail.com"}
@@ -26,6 +32,7 @@
                       :major "Computer Science"
                       :university "Grand Valley State University"}]
            :hobbies ["Playing with my kids"
+                     "Bowling"
                      {:href "https://www.youtube.com/watch?v=_CI-0E_jses"
                       :text "Playing jazz music"}
                      {:href "https://www.youtube.com/watch?v=bXZhTb0eUqA&t=118s"
@@ -33,6 +40,7 @@
            :buzzwords
            [;; languages
             "clojure"
+            "babashka"
             "python"
             "perl"
             "javascript"
@@ -42,49 +50,75 @@
             "postgres"
             "cassandra"
             "elasticsearch"
+            "dbt"
+            "redshift"
             ;; tools
             "emacs / cider"
             "kubernetes"
             "docker"
             "aws"
+            "terraform"
+            "prefect"
+            "aws glue"
             ;; abstract ideas
             "streaming"
             "observability"
+            "orchestration"
+            "data"
+            "data warehouse"
             "team-building"
             "ergonomics"
             "performance"
             "distributed systems"
             "CI / CD"
             "git ops"]
-           :jobs [{:title "Senior Software Engineer / Scrum Master"
+           :jobs [{:title "Senior Data Engineer"
+                   :company "OneStudyTeam"
+                   :team "Data Engineering"
+                   :from "Sept 2021"
+                   :to "Dec 2022"
+                   :responsibilities
+                   (add-data
+                    (add-emacs
+                     [{:tags #{"observability" "ergonomics"}
+                       :text "Implemented a full, pluggable SageMaker notebooking environment used by data and ML scientists"}
+                      {:tags #{"observability"}
+                       :text "Improved traditional Glue-based data-ingest latency from hours to minutes"}
+                      {:tags #{"orchestation" "prefect"}
+                       :text "Designed a simple-to-use Prefect flow system with full CI/CD workflows"}
+                      {:tags #{"kafka" "streaming"}
+                       :text "Wrote a windowed schema implementation to allow more lenient data ingest"}
+                      {:tags #{"ergonomics"}
+                       :text "Wrote and maintained several composable libraries designed to improve code habits and ergonomics"}]))}
+                  {:title "Principal Software Engineer / Scrum Master"
                    :company "Barracuda Networks"
                    :team "Sonian"
                    :from "Jan 2018"
-                   :to "now"
+                   :to "Sept 2021"
                    :responsibilities
                    (add-emacs
-                    [{:tags #{"clojure" "javascript" "distributed systems" "elasticsearch" "performance" "postgres" "rabbit" "aws"}
-                      :text "Maintain, observe, and improve a distributed system that handles millions of email per day"}
+                    [{:tags #{"clojure" "babashka" "javascript" "distributed systems" "elasticsearch" "performance" "postgres" "rabbit" "aws"}
+                      :text "Maintained, observed, and improved a distributed system that handles millions of email per day"}
                      {:tags #{"clojure" "kubernetes" "docker" "aws" "CI / CD" "git ops"}
-                      :text "Develop a data-driven, manifest generation tool for Kubernetes resources"}
+                      :text "Developed a data-driven, manifest generation tool for Kubernetes resources"}
                      {:tags #{"clojure" "team-building" "distributed systems" "observability"}
-                      :text "Mentor junior developers through the learning curve of Clojure and our system"}
+                      :text "Mentored developers through the learning curve of Clojure and our system"}
                      {:tags #{"clojure" "observability" "docker" "performance"}
-                      :text "Implement structured, action-able logging into a previously opaque legacy system"}
+                      :text "Implemented structured, action-able logging into a alongisde opaque legacy system"}
                      {:tags #{"clojure" "kafka" "kubernetes" "postgres" "streaming"}
-                      :text "Reimplement previously-obtuse auditing service with well-defined, search-able user events"}
+                      :text "Refactored an obtuse auditing service with well-defined, search-able events"}
                      {:tags #{"clojure" "distributed systems" "kafka" "performance" "postgres" "elasticsearch" "streaming"}
-                      :text "Design and implement a streaming service for removing customer information from custom and encrypted files"}
+                      :text "Designed and implement a streaming service for removing customer information from custom and encrypted files"}
                      {:tags #{"clojure" "kubernetes"}
-                      :text "Remove expensive and complicated 3rd party rendering system with open-source tooling"}
+                      :text "Removed expensive and complicated 3rd party rendering system with open-source tooling"}
                      {:tags #{"ergonomics" "team-building" "distributed systems"}
                       :text "Lead the team through architectural decisions, sprints, and retrospectives"}
                      {:tags #{"team-building" "distributed systems"}
-                      :text "Help coordinate bi-weekly movie/gaming nights for our entirely remote team"}
+                      :text "Helped coordinate bi-weekly movie/gaming nights for our entirely remote team"}
                      {:tags #{"ergonomics" "git ops" "aws" "kubernetes" "docker" "CI / CD"}
-                      :text "Coordinate with operations on 3rd party integrations (sensu, sumologic, ELK) and sun-setting of legacy deployment systems (Chef, EC2)"}
+                      :text "Coordinated with operations on 3rd party integrations (sensu, sumologic, ELK) and sun-setting of legacy deployment systems (Chef, EC2)"}
                      {:tags #{"ergonomics" "CI / CD" "git ops"}
-                      :text "Manage CI / CD operations via Jenkins, Github Actions, Artifactory, and flux"}])}
+                      :text "Managed CI / CD operations via Jenkins, Github Actions, Artifactory, and flux"}])}
                   {:title "Senior Software Engineer"
                    :company "Barracuda Networks"
                    :team "Cloud Archiving"
@@ -101,8 +135,8 @@
                      {:tags #{"CI / CD" "ergonomics" "perl"}
                       :text "Worked with operations to improve and update our Puppet code"}
                      {:tags #{"python" "observability" "javascript" "perl" "cassandra" "elasticsearch"}
-                      :text "Reimplemented customer exports to provide better chunking, throughput, and checkpointing"}])}
-                  {:title "Software Engineer I"
+                      :text "Refactored exporting to provide better throughput and checkpointing"}])}
+                  #_{:title "Software Engineer I"
                    :company "Dematic"
                    :team "Sort"
                    :from "Jan 2014"
