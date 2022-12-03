@@ -5,12 +5,6 @@
   [responsibilities]
   (map #(update % :tags conj "emacs / cider") responsibilities))
 
-(defn add-data
-  "Adds all data tags to responsibilitis."
-  [responsibilities]
-  (let [tags ["clojure" "babashka" "python" "dbt" "data" "data warehouse" "glue" "redshift" "terraform" "dbt"]]
-    (map #(update % :tags concat tags) responsibilities)))
-
 (def default-db
   {:highlights {:job nil
                 :buzzwords nil}
@@ -78,18 +72,17 @@
                    :from "Sept 2021"
                    :to "Dec 2022"
                    :responsibilities
-                   (add-data
-                    (add-emacs
-                     [{:tags #{"observability" "ergonomics"}
-                       :text "Implemented a full, pluggable SageMaker notebooking environment used by data and ML scientists"}
-                      {:tags #{"observability"}
-                       :text "Improved traditional Glue-based data-ingest latency from hours to minutes"}
-                      {:tags #{"orchestation" "prefect"}
-                       :text "Designed a simple-to-use Prefect flow system with full CI/CD workflows"}
-                      {:tags #{"kafka" "streaming"}
-                       :text "Wrote a windowed schema implementation to allow more lenient data ingest"}
-                      {:tags #{"ergonomics"}
-                       :text "Wrote and maintained several composable libraries designed to improve code habits and ergonomics"}]))}
+                   (add-emacs
+                    [{:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "observability" "ergonomics"}
+                      :text "Implemented a full, pluggable SageMaker notebooking environment used by data and ML scientists"}
+                     {:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "observability"}
+                      :text "Improved traditional Glue-based data-ingest latency from hours to minutes"}
+                     {:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "orchestation" "prefect"}
+                      :text "Designed a simple-to-use Prefect flow system with full CI/CD workflows"}
+                     {:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "kafka" "streaming"}
+                      :text "Wrote a windowed schema implementation to allow more lenient data ingest"}
+                     {:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "ergonomics"}
+                      :text "Wrote and maintained several composable libraries designed to improve code habits and ergonomics"}])}
                   {:title "Principal Software Engineer / Scrum Master"
                    :company "Barracuda Networks"
                    :team "Sonian"
@@ -137,16 +130,16 @@
                      {:tags #{"python" "observability" "javascript" "perl" "cassandra" "elasticsearch"}
                       :text "Refactored exporting to provide better throughput and checkpointing"}])}
                   #_{:title "Software Engineer I"
-                   :company "Dematic"
-                   :team "Sort"
-                   :from "Jan 2014"
-                   :to "Aug 2015"
-                   :responsibilities
-                   [{:tags #{"javascript" "performance"}
-                     :text "Designed and commissioned extensive route-based, message-driven warehouse storage solutions"}
-                    {:tags #{"observability"}
-                     :text "Interfaced with 3rd party warehouse management and conveyor systems"}
-                    {:tags #{"performance"}
-                     :text "Optimized stored procedures for use in multi-threaded operations"}
-                    {:tags #{"team-building"}
-                     :text "Collaborated with customers through the design and implementation of their warehouse solution"}]}]}})
+                     :company "Dematic"
+                     :team "Sort"
+                     :from "Jan 2014"
+                     :to "Aug 2015"
+                     :responsibilities
+                     [{:tags #{"javascript" "performance"}
+                       :text "Designed and commissioned extensive route-based, message-driven warehouse storage solutions"}
+                      {:tags #{"observability"}
+                       :text "Interfaced with 3rd party warehouse management and conveyor systems"}
+                      {:tags #{"performance"}
+                       :text "Optimized stored procedures for use in multi-threaded operations"}
+                      {:tags #{"team-building"}
+                       :text "Collaborated with customers through the design and implementation of their warehouse solution"}]}]}})

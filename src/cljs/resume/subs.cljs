@@ -4,7 +4,6 @@
 (re/reg-sub
  ::name
  (fn [db]
-   (println db)
    (-> db :_info :name)))
 
 (re/reg-sub
