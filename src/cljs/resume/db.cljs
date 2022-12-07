@@ -10,7 +10,9 @@
                 :buzzwords nil}
    :_info {:name "Darin Douglass"
            :title "Principal Software Engineer"
-           :contact-methods [{:icon :i.far.fa-envelope
+           :contact-methods [{:icon :i.far.fa-building
+                              :text "Michigan (EST/EDT)"}
+                             {:icon :i.far.fa-envelope
                               :href "mailto:douglassdarin+resume@gmail.com"
                               :text "douglassdarin@gmail.com"}
                              {:icon :i.fas.fa-phone
