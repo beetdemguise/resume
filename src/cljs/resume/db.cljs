@@ -68,7 +68,20 @@
             "distributed systems"
             "CI / CD"
             "git ops"]
-           :jobs [{:title "Senior Data Engineer"
+           :jobs [{:title "Principal Data Engineer"
+                   :company "Barracuda Networks"
+                   :team "Data Engineering"
+                   :from "February 2023"
+                   :to "now"
+                   :responsibilities
+                   (add-emacs
+                    [{:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "terraform" "ergonomics"}
+                      :text "Fully operationalize manual infrastructure integrating data from a dozen different products"}
+                     {:tags #{"python" "data" "data warehouse" "terraform" "ergonomics"}
+                      :text "Architect company-wide conventions and usage patterns of data tools"}
+                     {:tags #{"python" "data" "data warehouse" "terraform" "ergonomics"}
+                      :text "Redesign foundational data systems to simpler and be more collaborative"}])}
+                  {:title "Senior Data Engineer"
                    :company "OneStudyTeam"
                    :team "Data Engineering"
                    :from "Sept 2021"
@@ -83,7 +96,7 @@
                       :text "Designed a simple-to-use Prefect flow system with full CI/CD workflows"}
                      {:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "kafka" "streaming"}
                       :text "Wrote a windowed schema implementation to allow more lenient data ingest"}
-                     {:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "ergonomics"}
+                     #_{:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "ergonomics"}
                       :text "Wrote and maintained several composable libraries designed to improve code habits and ergonomics"}])}
                   {:title "Principal Software Engineer / Scrum Master"
                    :company "Barracuda Networks"
@@ -98,7 +111,7 @@
                       :text "Developed a data-driven, manifest generation tool for Kubernetes resources"}
                      {:tags #{"clojure" "team-building" "distributed systems" "observability"}
                       :text "Mentored developers through the learning curve of Clojure and our system"}
-                     {:tags #{"clojure" "observability" "docker" "performance"}
+                     #_{:tags #{"clojure" "observability" "docker" "performance"}
                       :text "Implemented structured, action-able logging into a alongisde opaque legacy system"}
                      {:tags #{"clojure" "kafka" "kubernetes" "postgres" "streaming"}
                       :text "Refactored an obtuse auditing service with well-defined, search-able events"}
@@ -121,15 +134,17 @@
                    :to "Jan 2018"
                    :responsibilities
                    (add-emacs
-                    [{:tags #{"python" "perl" "ergonomics" "cassandra"}
+                    [#_{:tags #{"python" "perl" "ergonomics" "cassandra"}
                       :text "Simplified customer support experience with a python/Flask UI layer"}
-                     {:tags #{"elasticsearch" "python" "perl"}
+                     #_{:tags #{"elasticsearch" "python" "perl"}
                       :text "Improved performance of per-customer statistics gathering"}
                      {:tags #{"elasticsearch" "cassandra" "CI / CD"}
-                      :text "Helped maintain fleets of servers including Elasticsearch and Cassandra nodes"}
-                     {:tags #{"CI / CD" "ergonomics" "perl"}
-                      :text "Worked with operations to improve and update our Puppet code"}
-                     {:tags #{"python" "observability" "javascript" "perl" "cassandra" "elasticsearch"}
+                      :text "Helped maintain software and fleets of servers including Elasticsearch and Cassandra nodes"}
+                     {:tags #{"python" "perl" "ergonomics" "cassandra"}
+                      :text "Assisted migration from an appliance-based software to a cloud offering"}
+                     #_{:tags #{"CI / CD" "ergonomics" "perl"}
+                        :text "Worked with operations to improve and update our Puppet code"}
+                     #_{:tags #{"python" "observability" "javascript" "perl" "cassandra" "elasticsearch"}
                       :text "Refactored exporting to provide better throughput and checkpointing"}])}
                   #_{:title "Software Engineer I"
                      :company "Dematic"
