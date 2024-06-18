@@ -22,6 +22,11 @@
    (-> db :_info :hobbies)))
 
 (re/reg-sub
+ ::leadership
+ (fn [db]
+   (-> db :_info :leadership)))
+
+(re/reg-sub
  ::buzzwords
  (fn [db]
    (-> db :_info :buzzwords)))

@@ -26,32 +26,46 @@
    [:h2.header "Education"]
    (map degree @(re/subscribe [::subs/degrees]))])
 
+(defn leadership
+  []
+  [:div.hobbies
+   [:h2.header "Leadership"]
+   (for [hobby @(re/subscribe [::subs/leadership])]
+     (let [{:keys [text href] :as attrs} (if (map? hobby) hobby {:text hobby})
+           tag (if href :a :span)]
+       [tag (assoc attrs
+                   :key text
+                   :target "_blank") text]))])
+
 (defn hobbies
   []
   [:div.hobbies
-   [:h2.header "Hobbies"]
-   (let [reading-text @(re/subscribe [::subs/reading-hobby-text])]
-     (cons
-      [:span {:onMouseEnter #(re/dispatch [:start-reading-hover])
-              :onMouseLeave #(re/dispatch [:stop-reading-hover])}
-       reading-text]
-      (for [hobby @(re/subscribe [::subs/hobbies])]
-        (let [{:keys [text href] :as attrs} (if (map? hobby) hobby {:text hobby})
-              tag (if href :a :span)]
-          [tag (assoc attrs
-                      :key text
-                      :target "_blank") text]))))])
+   [:h2.header "Tools"]
+   (for [hobby @(re/subscribe [::subs/hobbies])]
+     (let [{:keys [text href] :as attrs} (if (map? hobby) hobby {:text hobby})
+           tag (if href :a :span)]
+       [tag (assoc attrs
+                   :key text
+                   :target "_blank") text]))])
 
 (defn buzzwords
   [{:keys [buzzwords]}]
   [:div.skills
-   [:h2.header "Buzzwords"]
+   [:h2.header "Leadership & Training"]
    [:div.buzzy
     (for [buzz @(re/subscribe [::subs/buzzwords])]
       [:div [:span {:key buzz
-                    :class (when (contains? buzzwords buzz) "highlighted")
-                    :onMouseEnter #(re/dispatch [:start-hover-buzz buzz])
-                    :onMouseLeave #(re/dispatch [:stop-hover-buzz buzz])}
+                    :class (when (contains? buzzwords buzz) "highlighted")}
+             buzz]])]])
+
+(defn tools
+  [{:keys [buzzwords]}]
+  [:div.skills
+   [:h2.header "Tools"]
+   [:div.buzzy
+    (for [buzz @(re/subscribe [::subs/hobbies])]
+      [:div [:span {:key buzz
+                    :class (when (contains? buzzwords buzz) "highlighted")}
              buzz]])]])
 
 (defn contact-method
@@ -60,8 +74,8 @@
     [:div.method {:key icon}
      [icon]
      [tag (assoc attrs
-                   :key text
-                   :target "_blank")
+                 :key text
+                 :target "_blank")
       text]]))
 
 (defn contact-info
@@ -73,9 +87,10 @@
 (defn sidebar
   []
   [:div.sidebar
-   [:img.portrait {:src "https://avatars.githubusercontent.com/u/3887412"}]
+   [:img.portrait {:src "headshot.png"}]
    (contact-info)
    (education)
+   #_(leadership)
    (hobbies)])
 
 (defn job-description
@@ -83,7 +98,7 @@
   [:div.job {:key (str company team)}
    [:span.title title]
    [:p.description
-    [:strong [:span.company company] " / " [:span.team team]]
+    [:strong [:span.company company] " | " [:span.team team]]
     [:br]
     [:span.range [:span.from from] " - " [:span.to to]]]
    [:ul
@@ -97,9 +112,7 @@
                              ;; is one of my tags highlighted?
                              (and (nil? job)
                                   (not-empty (set/intersection tags buzzwords))))
-                        "highlighted")
-               :onMouseEnter #(re/dispatch [:start-hover-job key tags])
-               :onMouseLeave #(re/dispatch [:stop-hover-job key])}
+                        "highlighted")}
           text]))
       responsibilities)]])
 

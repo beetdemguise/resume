@@ -17,8 +17,8 @@
 (def smaller-padding 5)
 
 (def portrait-width 250)
-(def portrait-height 250)
-(def sidebar-width (+ portrait-width standard-padding standard-padding 5))
+(def portrait-height 300)
+(def sidebar-width (+ portrait-width standard-padding standard-padding 20))
 
 (def backgrounds
   {:body ""
@@ -62,7 +62,7 @@
                :padding-bottom (pixels standard-padding)}
      [:.buzzy {:display "flex"
                :flex-flow "row wrap"}
-      [:div {:width (pixels 135)}
+      [:div {:width (pixels 250)}
        [:span {:font-size (pixels 14)}]]]]
     [:.hobbies {:padding-top (pixels standard-padding)}
      [:span :a {:display "block"

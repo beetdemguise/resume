@@ -8,162 +8,68 @@
 (def default-db
   {:highlights {:job nil
                 :buzzwords nil}
-   :_info {:name "Darin Douglass"
-           :title "Principal Software Engineer"
-           :contact-methods [{:icon :i.far.fa-building
-                              :text "Michigan (EST/EDT)"}
-                             {:icon :i.far.fa-envelope
-                              :href "mailto:douglassdarin+resume@gmail.com"
-                              :text "douglassdarin@gmail.com"}
+   :_info {:name "Melisa Overway"
+           ;;:title "Principal Software Engineer"
+           :contact-methods [{:icon :i.far.fa-envelope
+                              :href "mailto:overwaym@reeths-puffer.org"
+                              :text "overwaym@reeths-puffer.org"}
                              {:icon :i.fas.fa-phone
-                              :text "(616) 312 - 9313"}
-                             {:icon :i.fab.fa-github
-                              :href "https://github.com/darindouglass"
-                              :text "darindouglass"}
-                             {:icon :i.fab.fa-linkedin-in
-                              :href "https://linkedin.com/in/darin-douglass-57400158/"
-                              :text "darin-douglass"}]
-           :degrees [{:name "B.S."
+                              :text "(616) 638 - 5825"}]
+           :degrees [{:name "B.A."
                       :icon "gv.jpg"
-                      :major "Computer Science"
+                      :major "Education / English Language Arts"
+                      :university "Grand Valley State University"}
+                     {:name "Master"
+                      :icon "gv.jpg"
+                      :major "Reading Instruction (partial)"
                       :university "Grand Valley State University"}]
-           :hobbies ["Playing with my kids"
-                     "Bowling"
-                     {:href "https://www.youtube.com/watch?v=_CI-0E_jses"
-                      :text "Playing jazz music"}
-                     {:href "https://www.youtube.com/watch?v=bXZhTb0eUqA&t=118s"
-                      :text "Playing long video games"}]
+           :leadership []
+           :hobbies ["Classkick"
+                     "Google Suite"
+                     "Padlet"
+                     "Slido"
+                     "Flipgrid"
+                     "PearDeck"
+                     "NewsEla"
+                     "Epic"
+                     "Calendly"]
            :buzzwords
-           [;; languages
-            "clojure"
-            "babashka"
-            "python"
-            "perl"
-            "javascript"
-            ;; systems
-            "kafka"
-            "rabbit"
-            "postgres"
-            "cassandra"
-            "elasticsearch"
-            "dbt"
-            "redshift"
-            ;; tools
-            "emacs / cider"
-            "kubernetes"
-            "docker"
-            "aws"
-            "terraform"
-            "prefect"
-            "aws glue"
-            ;; abstract ideas
-            "streaming"
-            "observability"
-            "orchestration"
-            "data"
-            "data warehouse"
-            "team-building"
-            "ergonomics"
-            "performance"
-            "distributed systems"
-            "CI / CD"
-            "git ops"]
-           :jobs [{:title "Principal Data Engineer"
-                   :company "Barracuda Networks"
-                   :team "Data Engineering"
-                   :from "February 2023"
+           ["School Improvement Team"
+            "Child Study Team"
+            "PBL Leadership Group"
+            "Capturing Kids' Hearts"
+            "Project Based Learning (PBL)"
+            "Lucy Calkins Columbia Workshop"
+            "Brain Frames/Empower"
+            "PBIS System of Support"
+            "FAME: Formative Assessment"
+            "CHAMPS"]
+           :jobs [{:title "Reeths-Puffer Schools"
+                   :company "English Language Arts / Social Studies Teacher"
+                   :team "5th"
+                   :from "Aug 2012"
                    :to "now"
                    :responsibilities
-                   (add-emacs
-                    [{:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "terraform" "ergonomics"}
-                      :text "Fully operationalize manual infrastructure integrating data from a dozen different products"}
-                     {:tags #{"python" "data" "data warehouse" "terraform" "ergonomics"}
-                      :text "Architect company-wide conventions and usage patterns of foundational data tools"}
-                     {:tags #{"python" "data" "data warehouse" "terraform" "ergonomics"}
-                      :text "Redesign data systems to be simpler, testable, and more collaborative"}])}
-                  {:title "Senior Data Engineer"
-                   :company "OneStudyTeam"
-                   :team "Data Engineering"
-                   :from "Sept 2021"
-                   :to "Dec 2022"
+                   [{:text "Taught all subjects during the 2020 - 2021 school year"}
+                    {:text "Build positive relationships with students and connected with them individually"}
+                    {:text "Engage with students through a PBL model to create learning experiences with a wide impact"}
+                    {:text "Work in partnership with community members and stakeholders to bring authenticity and depth to student learning experiences"}
+                    {:text "Collaborate with colleagues daily/weekly to create and fine-tune project ideas, give and receive feedback, and discuss student needs"}
+                    {:text "Leverage technology tools to support a wide-range of formative assessments and student reflection"}
+                    {:text "Implement Positivity Project curriculum; identifying and capitalizing on each students’ character strengths"}
+                    {:text "Work effectively with students’ families to inform and strengthen the home/school connection"}
+                    {:text "Worked from a virtual platform to meet the needs of both face-to-face learners as well as at home learners. (2020-2021)"}
+                    {:text "Attend students' sporting events, dance recitals, and other extracurricular activitiess"}]}
+                  {:title "Mona Shores Schools"
+                   :company "English Language Arts / Social Studies Teacher"
+                   :team "3rd, 4th"
+                   :from "Aug 2004"
+                   :to "Aug 2012"
                    :responsibilities
-                   (add-emacs
-                    [{:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "observability" "ergonomics"}
-                      :text "Implemented a full, pluggable SageMaker notebooking environment used by data and ML scientists"}
-                     {:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "observability"}
-                      :text "Improved traditional Glue-based data-ingest latency from hours to minutes"}
-                     {:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "orchestation" "prefect"}
-                      :text "Designed a simple-to-use Prefect flow system with full CI/CD workflows"}
-                     {:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "kafka" "streaming"}
-                      :text "Wrote a windowed schema implementation to allow more lenient data ingest"}
-                     ;; hosted
-                     {:tags #{"clojure" "babashka" "python" "dbt" "data" "data warehouse" "aws glue" "redshift" "terraform" "ergonomics"}
-                      :text "Wrote and maintained several composable libraries designed to improve code habits and ergonomics"}])}
-                  {:title "Principal Software Engineer / Scrum Master"
-                   :company "Barracuda Networks"
-                   :team "Sonian"
-                   :from "Jan 2018"
-                   :to "Sept 2021"
-                   :responsibilities
-                   (add-emacs
-                    [{:tags #{"clojure" "babashka" "javascript" "distributed systems" "elasticsearch" "performance" "postgres" "rabbit" "aws"}
-                      :text "Maintained, observed, and improved a distributed system that handles millions of email per day"}
-                     {:tags #{"clojure" "kubernetes" "docker" "aws" "CI / CD" "git ops"}
-                      :text "Developed a data-driven, manifest generation tool for Kubernetes resources"}
-                     {:tags #{"clojure" "team-building" "distributed systems" "observability"}
-                      :text "Mentored developers through the learning curve of Clojure and our system"}
-                     ;; hosted
-                     {:tags #{"clojure" "observability" "docker" "performance"}
-                      :text "Implemented structured, action-able logging into a alongisde opaque legacy system"}
-                     {:tags #{"clojure" "kafka" "kubernetes" "postgres" "streaming"}
-                      :text "Refactored an obtuse auditing service with well-defined, search-able events"}
-                     {:tags #{"clojure" "distributed systems" "kafka" "performance" "postgres" "elasticsearch" "streaming"}
-                      :text "Designed and implement a streaming service for removing customer information from custom and encrypted files"}
-                     {:tags #{"clojure" "kubernetes"}
-                      :text "Removed expensive and complicated 3rd party rendering system with open-source tooling"}
-                     {:tags #{"ergonomics" "team-building" "distributed systems"}
-                      :text "Lead the team through architectural decisions, sprints, and retrospectives"}
-                     {:tags #{"team-building" "distributed systems"}
-                      :text "Helped coordinate bi-weekly movie/gaming nights for our entirely remote team"}
-                     {:tags #{"ergonomics" "git ops" "aws" "kubernetes" "docker" "CI / CD"}
-                      :text "Coordinated with operations on 3rd party integrations (sensu, sumologic, ELK) and sun-setting of legacy deployment systems (Chef, EC2)"}
-                     {:tags #{"ergonomics" "CI / CD" "git ops"}
-                      :text "Managed CI / CD operations via Jenkins, Github Actions, Artifactory, and flux"}])}
-                  {:title "Senior Software Engineer"
-                   :company "Barracuda Networks"
-                   :team "Cloud Archiving"
-                   :from "Aug 2015"
-                   :to "Jan 2018"
-                   :responsibilities
-                   (add-emacs
-                    [;; hosted
-                     {:tags #{"python" "perl" "ergonomics" "cassandra"}
-                        :text "Simplified customer support experience with a python/Flask UI layer"}
-                     ;; hosted
-                     {:tags #{"elasticsearch" "python" "perl"}
-                      :text "Improved performance of per-customer statistics gathering"}
-                     {:tags #{"elasticsearch" "cassandra" "CI / CD"}
-                      :text "Helped maintain software and fleets of servers including Elasticsearch and Cassandra nodes"}
-                     {:tags #{"python" "perl" "ergonomics" "cassandra"}
-                      :text "Assisted migration from an appliance-based software to a cloud offering"}
-                     ;; hosted
-                     {:tags #{"CI / CD" "ergonomics" "perl"}
-                        :text "Worked with operations to improve and update our Puppet code"}
-                     ;; hosted
-                     {:tags #{"python" "observability" "javascript" "perl" "cassandra" "elasticsearch"}
-                      :text "Refactored exporting to provide better throughput and checkpointing"}])}
-                  ;; hosted
-                  {:title "Software Engineer I"
-                   :company "Dematic"
-                   :team "Sort"
-                   :from "Jan 2014"
-                   :to "Aug 2015"
-                   :responsibilities
-                   [{:tags #{"javascript" "performance"}
-                     :text "Designed and commissioned extensive route-based, message-driven warehouse storage solutions"}
-                    {:tags #{"observability"}
-                     :text "Interfaced with 3rd party warehouse management and conveyor systems"}
-                    {:tags #{"performance"}
-                     :text "Optimized stored procedures for use in multi-threaded operations"}
-                    {:tags #{"team-building"}
-                     :text "Collaborated with customers through the design and implementation of their warehouse solution"}]}]}})
+                   [{:text "Implemented Readers and Writer's Workshop"}
+                    {:text "Built positive relationships with students and connected with them individually"}
+                    {:text "Attended students' sporting events, dance recitals, and other extracurricular activities"}
+                    {:text "Collaborated with colleagues regularly to plan, implement and review student data"}
+                    {:text "Worked closely with families to built raptor and provide for students' individual needs"}
+                    {:text "Planned and carried out small group interventions for math and reading"}
+                    {:text "Worked within a PBIS model to build positive community and provide tiered supports for students"}]}]}})
