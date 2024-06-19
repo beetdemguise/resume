@@ -12,12 +12,16 @@
 (def full {:height (percent 100)
            :width (percent 100)})
 
+(def red "#EF4271")
+(def blue "#31BDF2")
+(def purple "#9640EF")
+
 (def standard-padding 20)
 (def small-padding 10)
 (def smaller-padding 5)
 
-(def portrait-width 275)
-(def portrait-height 325)
+(def portrait-width 200)
+(def portrait-height 250)
 (def sidebar-width (+ portrait-width standard-padding standard-padding 20))
 
 (def backgrounds
@@ -42,7 +46,7 @@
   [:.header {:text-transform "uppercase"
              :letter-spacing (pixels 5)
              :padding-bottom (pixels small-padding)}]
-  [:h2.header {:color "#EF4271"}]
+  [:h2.header {:color red}]
   [:.resume {:display "flex"
              :flex-direction "column"
              :align-items "stretch"
@@ -63,15 +67,21 @@
                :padding-bottom (pixels standard-padding)}
      [:.buzzy {:display "flex"
                :flex-flow "row wrap"}
-      [:div {:width (pixels 245)}
+      [:div {:width (pixels 300)}
        [:span {:font-size (pixels 14)}]]]]
     [:.projects {:display "flex"
                  :flex-direction "column"
                  :padding-bottom (pixels standard-padding)}
      [:div.container {:display "flex"
                       :flex-flow "row wrap"}
-      [:div {:width (pixels 350)}
-       [:a {:color "#31BDF2"}]]]]
+      [:div.summary
+       [:div {:margin-bottom (pixels 5)}]
+       [:div.italic {:font-style "italic"}]
+       [:span.emphasis {:color red}]]
+      [:div {:width (pixels 300)
+             :margin-right (pixels standard-padding)}
+       [:a {:color purple
+            :margin 0}]]]]
     [:.hobbies {:padding-top (pixels standard-padding)}
      [:span :a {:display "block"
                 :padding-bottom (pixels small-padding)}]]
@@ -110,7 +120,17 @@
      [:.experience {:padding-bottom (pixels standard-padding)}
       [:.job {:padding-bottom (pixels standard-padding)}
        [:.title {:font-size (pixels 24)
-                 :color "#31BDF2"}]
+                 :color blue}]
        [:.description
         [:.company.team {:font-size (pixels 14)}]
-        [:.from.to {:font-size (pixels 14)}]]]]]]])
+        [:.from.to {:font-size (pixels 14)}]]]]]]
+   [:.letter {:display "flex"
+              :flex-direction "column"
+              :align-items "stretch"
+              :height "100%"
+              :padding (pixels standard-padding)}
+    [:.time {:padding-bottom (pixels standard-padding)}]
+    [:.greeting {:color red}]
+    [:.paragraph {:padding-bottom (pixels standard-padding)}]
+    [:.salutation
+     [:div.name {:color blue}]]]])

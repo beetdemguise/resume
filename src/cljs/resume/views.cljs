@@ -1,5 +1,6 @@
 (ns resume.views
   (:require [clojure.set :as set]
+            [clojure.string :as str]
             [re-frame.core :as re]
             [resume.subs :as subs]))
 
@@ -16,9 +17,10 @@
 
 (defn degree
   [{:keys [icon name major university]}]
-  [:div.degree {:key icon}
-   [:img {:src icon :alt university :title university}]
-   [:span name ", " major]])
+  (remove nil?
+          [:div.degree {:key (or icon name)}
+           (when icon [:img {:src icon :alt university :title university}])
+           [:span name ", " major]]))
 
 (defn education
   []
@@ -52,21 +54,24 @@
   [:div.projects
    [:h2.header "Projects"]
    [:div.container
-    (for [{:keys [text href] :as _project} @(re/subscribe [::subs/projects])]
-      [:div [:a {:key text
-                 :href href
-                 :target "_blank"}
-             text]])]])
+    (for [{:keys [text href summary] :as _project} @(re/subscribe [::subs/projects])]
+      [:div
+       [:div [:a {:key text
+                  :href href
+                  :target "_blank"}
+              text]]
+       [:div.summary [:div summary]]])]])
 
 (defn contact-method
   [{:keys [icon text href] :as attrs}]
   (let [tag (if href :a :span)]
-    [:div.method {:key icon}
-     [icon]
-     [tag (assoc attrs
-                 :key text
-                 :target "_blank")
-      text]]))
+    (into [] (remove nil?)
+          [:div.method {:key (or icon text)}
+           (when icon [icon])
+           [tag (assoc attrs
+                       :key text
+                       :target "_blank")
+            text]])))
 
 (defn contact-info
   []
@@ -79,7 +84,6 @@
   [:div.sidebar
    [:img.portrait {:src "headshot.png"}]
    (contact-info)
-   (projects)
    (education)
    (hobbies)])
 
@@ -118,10 +122,27 @@
    (sidebar)
    [:div.content
     (buzzwords @(re/subscribe [::subs/highlights]))
+    (projects)
     (experience)]])
+
+(defn letter-content
+  [{:keys [when greeting body]
+    {:keys [name contact-methods]} :from}]
+  [:div.main.letter
+   [:div.time when]
+   [:div.header.greeting greeting]
+   (for [part (str/split body #"\n\n")]
+     [:div.paragraph part])
+   [:div.salutation
+    [:div.name name]
+    [:div.contact
+     [:div.methods
+      (map contact-method contact-methods)]]]])
 
 (defn resume
   []
   [:div.resume
    (heading)
-   (content)])
+   (if-let [letter @(re/subscribe [::subs/letter])]
+     (letter-content letter)
+     (content))])

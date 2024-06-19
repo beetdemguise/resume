@@ -7,6 +7,11 @@
    (-> db :_info :name)))
 
 (re/reg-sub
+ ::letter
+ (fn [db]
+   (-> db :_info :letter)))
+
+(re/reg-sub
  ::title
  (fn [db]
    (-> db :_info :title)))
