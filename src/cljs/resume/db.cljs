@@ -23,7 +23,8 @@
                       :icon "gv.jpg"
                       :major "Reading Instruction (partial)"
                       :university "Grand Valley State University"}]
-           :leadership []
+           :projects [{:text "Empathy Podcasts" :href "https://galleries.vidflow.co/videos/fvd3a961"}
+                      {:text "Long Walk to Water" :href "https://vimeo.com/957070061?share=copy"}]
            :hobbies ["Classkick"
                      "Google Suite"
                      "Padlet"

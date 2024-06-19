@@ -32,6 +32,11 @@
    (-> db :_info :buzzwords)))
 
 (re/reg-sub
+ ::projects
+ (fn [db]
+   (-> db :_info :projects)))
+
+(re/reg-sub
  ::degrees
  (fn [db]
    (-> db :_info :degrees)))

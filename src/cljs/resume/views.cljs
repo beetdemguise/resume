@@ -26,17 +26,6 @@
    [:h2.header "Education"]
    (map degree @(re/subscribe [::subs/degrees]))])
 
-(defn leadership
-  []
-  [:div.hobbies
-   [:h2.header "Leadership"]
-   (for [hobby @(re/subscribe [::subs/leadership])]
-     (let [{:keys [text href] :as attrs} (if (map? hobby) hobby {:text hobby})
-           tag (if href :a :span)]
-       [tag (assoc attrs
-                   :key text
-                   :target "_blank") text]))])
-
 (defn hobbies
   []
   [:div.hobbies
@@ -58,15 +47,16 @@
                     :class (when (contains? buzzwords buzz) "highlighted")}
              buzz]])]])
 
-(defn tools
-  [{:keys [buzzwords]}]
-  [:div.skills
-   [:h2.header "Tools"]
-   [:div.buzzy
-    (for [buzz @(re/subscribe [::subs/hobbies])]
-      [:div [:span {:key buzz
-                    :class (when (contains? buzzwords buzz) "highlighted")}
-             buzz]])]])
+(defn projects
+  []
+  [:div.projects
+   [:h2.header "Projects"]
+   [:div.container
+    (for [{:keys [text href] :as _project} @(re/subscribe [::subs/projects])]
+      [:div [:a {:key text
+                 :href href
+                 :target "_blank"}
+             text]])]])
 
 (defn contact-method
   [{:keys [icon text href] :as attrs}]
@@ -128,6 +118,7 @@
    (sidebar)
    [:div.content
     (buzzwords @(re/subscribe [::subs/highlights]))
+    (projects)
     (experience)]])
 
 (defn resume

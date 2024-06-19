@@ -16,8 +16,8 @@
 (def small-padding 10)
 (def smaller-padding 5)
 
-(def portrait-width 250)
-(def portrait-height 300)
+(def portrait-width 275)
+(def portrait-height 325)
 (def sidebar-width (+ portrait-width standard-padding standard-padding 20))
 
 (def backgrounds
@@ -42,6 +42,7 @@
   [:.header {:text-transform "uppercase"
              :letter-spacing (pixels 5)
              :padding-bottom (pixels small-padding)}]
+  [:h2.header {:color "#EF4271"}]
   [:.resume {:display "flex"
              :flex-direction "column"
              :align-items "stretch"
@@ -62,8 +63,15 @@
                :padding-bottom (pixels standard-padding)}
      [:.buzzy {:display "flex"
                :flex-flow "row wrap"}
-      [:div {:width (pixels 250)}
+      [:div {:width (pixels 245)}
        [:span {:font-size (pixels 14)}]]]]
+    [:.projects {:display "flex"
+                 :flex-direction "column"
+                 :padding-bottom (pixels standard-padding)}
+     [:div.container {:display "flex"
+                      :flex-flow "row wrap"}
+      [:div {:width (pixels 350)}
+       [:a {:color "#31BDF2"}]]]]
     [:.hobbies {:padding-top (pixels standard-padding)}
      [:span :a {:display "block"
                 :padding-bottom (pixels small-padding)}]]
@@ -101,7 +109,8 @@
                 :padding (pixels standard-padding)}
      [:.experience {:padding-bottom (pixels standard-padding)}
       [:.job {:padding-bottom (pixels standard-padding)}
-       [:.title {:font-size (pixels 24)}]
+       [:.title {:font-size (pixels 24)
+                 :color "#31BDF2"}]
        [:.description
         [:.company.team {:font-size (pixels 14)}]
         [:.from.to {:font-size (pixels 14)}]]]]]]])
