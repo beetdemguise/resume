@@ -79,8 +79,8 @@
   [:div.sidebar
    [:img.portrait {:src "headshot.png"}]
    (contact-info)
+   (projects)
    (education)
-   #_(leadership)
    (hobbies)])
 
 (defn job-description
@@ -118,7 +118,6 @@
    (sidebar)
    [:div.content
     (buzzwords @(re/subscribe [::subs/highlights]))
-    (projects)
     (experience)]])
 
 (defn resume
