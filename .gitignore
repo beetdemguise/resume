@@ -24,3 +24,4 @@ package-lock.json
 manifest.edn
 resume.pdf
 app.js
+screen.css
